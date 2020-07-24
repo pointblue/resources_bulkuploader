@@ -1,0 +1,21 @@
+# type of data being processed
+ProtocolType: AreaSearch
+# protocols
+ProtocolName: SHORE1
+
+# event
+SamplingUnit: Plot
+Visit: 1
+EventDate: survey_dat
+EventStartTime: survey_tim
+DataSharingLevel: RAW
+
+# observation
+Count: number_obs
+Species: bird
+DetectionCue: V
+Observer: name
+ObservationNote: Note
+OtherObserversCount: "num oth"
+OtherObserversNames: oth names
+

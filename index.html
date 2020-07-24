@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script>
+
+        var activeDomain = 'https://data-test.pointblue.org';
+
+        var linkRewriter = function(a, b) {
+            $('a.tools').each(function() {       // a[href*="' + a + '"]
+                $(this).attr('href', $(this).attr('href').replace(a, b));
+            });
+        };
+
+        $( document ).ready(function() {
+
+            // set the radio button
+            $('input[type="radio"][name="serverDomain"][value="' + activeDomain + '"]').prop("checked", true);
+
+            // make all URLs have activedomain
+            linkRewriter('SERVER_DOMAIN', activeDomain);
+
+            // when radio change, change all the URL domains
+            $('input[type="radio"][name="serverDomain"]').on('click change', function(e) {
+                var newDomain = $(this).val();
+                linkRewriter(activeDomain, newDomain);
+                activeDomain = newDomain;
+            });
+
+        });
+
+
+    </script>
+
+    <style>
+        /* MAIN CSS */
+    </style>
+
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>
+                        <strong >Bulk Uploader Cookbook and Resources</strong>
+                    </h1>
+                    <p>
+                        July 20, 2020, Point Blue Conservation Science
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <label class="radio-inline">
+                    <input type="radio" name="serverDomain" value="https://data.pointblue.org"> Production
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="serverDomain" value="https://data-test.pointblue.org"> Test
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="serverDomain" value="http://172.22.22.22"> Local
+                </label>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <h3>
+                    Step 1:  Where should you put your data?
+                </h3>
+                <p>
+                    We assume you've got some observation data (in a CSV file, Excel file, Access database, or some
+                    other equivalent) and you want a home for it.
+                </p>
+                <ul>
+                    <li class="list-item">
+                        Are they with an agency that already uses AKN?  work with agency contact (TODO: Create List)
+                    </li>
+                    <li class="list-item">
+                        Are they part of an existing project effort?  work with that project coordinator (TODO: Create List)
+                    </li>
+                    <li class="list-item">
+                        Is the type of survey supported by AKN?  (TODO: Create List of survey types)
+                    </li>
+                    <li class="list-item">
+                        Do you need a new project or can you add to an existing project?  Have you spoken to an AKN
+                        Node coordinator about your project to see how it fits regionally?
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <h3>
+                    Step 2:  Choose Protocol(s)
+                </h3>
+                <p>
+                    You need to figure out the survey Protocol that best fits your survey to assign it to your project.
+                    The main type of protocols in our system include:
+                    <ul><li>
+                        <em>Point Count</em> - A stationary survey conducted at specific points
+                        that are part of a collection (or transect) of points for a predetermined amount time at
+                        each point within
+                        a specified distance, exhaustively collecting species that are in your list of survey species
+                        (we assume all species not recorded were absent), and individual animals counted once.
+                    </li><li>
+                        <em>Area Search</em> - Survey within a predefined boundary for a recorded amount of time,
+                        exhaustively collecting  all survey species that are detected in that boundary, and individual animals counted once.
+                    </li><li>
+                        <em>Linear Transect</em> - Survey while moving along a path on foot or by vehicle (boat, ship, plane, other)
+                        for a recorded amount of time, exhaustively collecting all survey species, and individual animals counted once.
+                    </li><li>
+                        <em>Secretive Marshbird</em> - Point count with tape playback where focal species are recorded every
+                        minute they are detected in a predetermined sequence of calls played in a fixed amount of time.
+                        Other non-focal species may also be collected using Point Count methods.
+                    </li></ul>
+                </p>
+                <p>
+                    Your choice of protocols ultimately depends on your research/monitoring questions,
+                    the species of interest, costs, and your desired probability of detecting a change of a certain size
+                    with a certain level of confidence.
+                    We recommend consulting with a statistician knowledgeable on the type of surveys you
+                    are planning to use to help how to best set up your project to reflect the goals of your survey.
+                </p>
+                <p>
+                    <em>Strategy 1:</em> Find out what Protocol others doing the same methodology have chosen.
+                    If you are using a familiar and well known set of field methods that prior projects
+                    have already created the exact Protocol you need.  For example, if you were using the
+                    <a href="https://ecos.fws.gov/ServCat/Reference/Profile/54162">
+                        USFWS National Protocol Framework for land bird monitoring
+                    </a>,
+                    you would discover the Point Count Protocol 0_to_9m25_50_100M+_KNUTSON
+                    (with Site Condition Protocol FWS_LANDBIRD_SITE_INFO)
+                    was created to support this effort.  Does your organization have standards they follow?  If so,
+                    follow them!
+                </p>
+                <p>
+                    <em>Strategy 2:</em> Find the closest fit from our library of protocols to your survey method.
+                    This approach is more appropriate for simpler surveys and efforts that are not being standardized.
+                    This approach is also less expensive and something you can accomplish today without assistance.
+                    Extra information you collect that is not supported by the protocol can either be put into notes
+                    fields or left out of this database.
+                </p>
+                <p>
+                    <em>Strategy 3:</em> Modify an existing protocol to fit better.  (need to create steps for how this works)
+                </p>
+                <p>
+                    <em>Strategy 4:</em>  Fully describe your protocol and have our team create it for you.
+                    This approach is more appropriate for standardized surveys that will be done by multiple
+                    people year after year.
+                    This approach costs time and money to set up the protocol, but the system reflects your
+                    exact methodology more completely.
+                </p>
+                <ul>
+                    <li class="list-item">
+                        Search for a protocol (<a class="tools" href="SERVER_DOMAIN/science/projectmanager/protocol_search">Protocol Search</a>)
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <h3>
+                    Step 3:  Create a Project (if you need one)
+                </h3>
+                <p>
+                    A Project is the database that you add observation data into.
+                    A Project represents an effort to collect data for some purpose, from asking a specific
+                    research question to the collective monitoring efforts of a facility or installation.
+                    A project requires creation of different metadata (see Steps 4a-4c below) before observation data can be entered or uploaded.
+                </p>
+                <p>
+                    We recommend you talk to someone about your needs before requesting a project be created for you.
+                    Read through the
+                    <a href="#who2contact">Who To Contact</a>
+                    list and see which best applies to you, and reach out to let them
+                    know what you want to do.  Their goal is to make sure you are plugged into other similar type
+                    efforts and help guide you on your best choices for getting your data in the AKN.
+                </p>
+                <ul>
+                    <li class="list-item">
+                        Create a new, empty project
+                        (<a class="tools" href="SERVER_DOMAIN/science/projectmanager/project_maker">Project Creation</a>)
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <h3>
+                    Step 4a:  Project Metadata - Create the Sampling Unit Hierarchy for your Project
+                </h3>
+                <p>
+                    The Sampling Unit Hierarchy describes the sampling design for your data, including types
+                    of sampling units and their geographic locations.  This layout should reflect the information
+                    in your observation data and be organized to foster
+                </p>
+                <p>
+                    The hierarchy is required to start at the top with one or more Study Areas.  A Study Area is where one
+                    or more types of sampling events take place.
+                    Study Area can contain multiple types of sampling units, including Point Count Transects,
+                    Area Search Plots, Fixed Transect, and many other types of sampling units, as well as other Study Areas.
+                    We have found that when you create Study Areas that contain other Study Areas,
+                    our users recommend not going any deeper than 3 levels (most project have a single level).
+                </p>
+                <p>
+                    Every sampling unit in the hierarchy has a Short Name, a Long Name, a Type (eg Study Area), and an
+                    optional GIS feature that can describe the location.  The combination of Short Name and Long Name
+                    must be unique within you entire Project.  The Short Name will be seen the most throughout the tools, and is
+                    the shorthand name for a sampling location.  The Long Name can be the same as the Short Name or can
+                    be made more descriptive, if that is useful.
+                    One technique that some users have done to ensure the Short and Long Name
+                    combination is unique is to add the type of sampling unit into the Long Name.  For example, if a
+                    project has a Study Area called "Pine Grove" (Short and Long name the same), and an identically
+                    named Area Search Plot of the same name,
+                </p>
+                <p></p>
+                <ul>
+                    <li class="list-item">
+                        Create / edit sampling units, including using GIS files
+                        (<a class="tools" href="SERVER_DOMAIN/apps/projectleaders/index.php?page=sampling-units">
+                        Project Leader > Create and Manage Sampling Units</a>)
+                    </li>
+                    <li class="list-item">
+                        Create the sampling unit hierarchy from a CSV file
+                        (<a class="tools" href="SERVER_DOMAIN/science/projectmanager/project_maker">Bulk Uploader</a>
+                        and click on "Add Sampling Units"). Choose the type of surveys you are loading, and
+                        Download the CSV Template.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <h3>
+                    Step 4b:  Project Metadata - Create Researchers
+                </h3>
+                <p>
+                    When you add observations to your Project, you need to assign who did the surveys (aka Researchers).
+                    We allow you to add Researchers to your Project 3 different ways.
+                </p>
+                <ul>
+                    <li class="list-item">
+                        Through registration.  See <a href="#stepbystep_assign2project">how to join a project by registering or requesting access.</a>
+                    </li>
+                    <li class="list-item">
+                        Create the missing Researchers from a CSV file
+                        (<a class="tools" href="SERVER_DOMAIN/science/projectmanager/project_maker">Bulk Uploader</a>
+                        and click on "Add Researchers")
+                    </li>
+                    <li class="list-item">
+                        Manually one at a time (use Project Leader to
+                        <a class="tools" href="SERVER_DOMAIN/apps/projectleaders/index.php?page=add-researcher-simple">Add New Researcher</a>, if they don't exist in the system,
+                        and provide the
+                        <a class="tools" href="SERVER_DOMAIN/apps/projectleaders/index.php?page=project-access">Researcher Access</a> to your project)
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <h3>
+                    Step 4c:  Project Metadata - Assign the Protocol(s) to your Project  (not required)
+                </h3>
+                <p>
+                    NOTE: this step might is not necessary, as the Protocol(s) will get added to the Project when
+                    you bulk load the observations.
+
+                    The Project needs to have the Protocol(s) assigned to the project in order for the system
+                    to know what fields are allowed and how to do validate data that is being entered.
+                </p>
+                <ul>
+                    <li class="list-item">
+                        Assign the protocol(s) manually (<a class="tools" href="SERVER_DOMAIN/apps/projectleaders/index.php?page=project-protocols">Project Leaders -  </a>)
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <h3>
+                    Step 5:  Add observation data in bulk
+                </h3>
+                <p>
+                    Now we are ready to get our observation data loaded into the Project, per the constraints of
+                    the protocol(s) into the Sampling Unit hierarchy representing what the Researchers saw during
+                    the surveys.
+                </p>
+                <p>
+                    The CSV file you will load should have one observation per line.
+                    Observations are organized into events as part of this process -- all observations seen at a single
+                    Sampling Unit at a given date and time under a Protocol.  All evemt information, such as date
+                    and Sampling Unit name, should be repeated for each observation (aka "flattened"
+                    or denormalized).
+                </p>
+                <p>
+                    To define how your CSV file of observations maps into our database, you must create a
+                    YAML definition that describes this mapping.
+                    See the YAML templates for full details, and examples to illustrate the templates.
+                </p>
+                <ul>
+                    <li class="list-item">
+                        Point Counts
+                        <ul><li>
+                            <a href="templates/pointcount.observations.simple.yaml">YAML template</a>
+                        </li><li>
+                            <a href="examples/pointcount_observations.yaml">YAML example</a>
+                            with
+                            <a href="examples/pointcount_observations.csv">CSV observation</a> example
+                        </li></ul>
+                    </li>
+                    <li class="list-item">
+                        Area Search
+                        <ul><li>
+                            <a href="templates/areasearch.observations.simple.yaml">YAML template</a>
+                        </li><li>
+                            <a href="examples/areasearch_observations.yaml">YAML example</a>
+                            with
+                            <a href="examples/areasearch_observations.csv">CSV observation</a> example
+                        </li></ul>
+                    </li>
+                    <li class="list-item">
+                        Linear Transects
+                        <ul><li>
+                            <a href="templates/fixedtransect.observations.simple.yaml">YAML template</a>
+                        </li></ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <h3>
+                    Step 6:  Go see if the data loaded as expected
+                </h3>
+                <p>
+                    After bulk uploading data, it's always a good idea to make sure the data got into the
+                    system as you intended.  Once you review them, you will want to set the data sharing level
+                    for everything you uploaded.
+                </p>
+                <ul>
+                    <li class="list-item">
+                        Download events, observations, and site conditions from the project database
+                        (<a href="SERVER_DOMAIN/apps/projectleaders/index.php?page=field-observations-download">Project Leader > Download</a>)
+                    </li>
+                    <li class="list-item">
+                        See a full event at a sampling unit
+                        (<a href="SERVER_DOMAIN/science/biologists">Biologists</a>)
+                    </li>
+                    <li class="list-item">
+                        Set data sharing levels
+                        (<a href="SERVER_DOMAIN/science/projectleaders">Set Sharing Levels</a>)
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <hr/>
+                <h2>
+                    <strong >Additional Step-By-Step Guides</strong>
+                </h2>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <h3>
+                    <a id="stepbystep_assign2project">&nbsp;</a>
+                    Step By Step:  How to register for an account and get assigned to a Project
+                </h3>
+                <ol><li>
+                    Go to the main entry tool
+                    (<a class="tools" href="SERVER_DOMAIN/science/biologists">Biologists tool</a>)
+                </li><li>
+                    Type in your email address (this is also your system user name) and hit Enter.
+                </li><li>
+                    If the system does not recognize your email, you will get the message “This user account was not found, please re-enter your email address or register for an account here”
+                </li><li><ol type="a">
+                    Click on the word “here” or go to  https://data.pointblue.org/apps/login/register.
+                </li><li>
+                    Fill out the registration form.  For the field “Project you wish to join”, enter the Project ID
+                    as given to you by the Project Leader.
+                </li><li>
+                    After you register, you will get an email from pointblue.org with a link
+                    you must click to confirm the registration.
+                    If you don’t see it, check your Junk or Spam folder to see if it is there.
+                </li><li>
+                    After you confirm your registration, one or more Project Leaders on the Project will get notified
+                    of your request to join the Project (by email) and will approve your request and assign your Project Role.
+                </li><li>
+                    Once a Project Leader has confirmed your registration, go back to step 1 above and log in to make sure everything works.
+                </ol></li><li>
+                    If you can log in successfully, but you don’t have access to the Project, you can request access.
+                </li><li><ol type="a">
+                    Go to our project request page
+                    (<a class="tools" href="SERVER_DOMAIN/apps/public/index.php?page=project-request">Project Request</a>)
+                    and enter the Project ID as given to you by the Project Leader.
+                </li><li>
+                    One or more Project Leaders on the Project will get notified
+                    of your request to join the Project (by email) and will approve your request and assign your Project Role.
+                </li><li>
+                    Once a Project Leader has approved your request, go back to step 1 above and log in
+                    to make sure you see you have access to the project.
+                </li></ol>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <a id="who2contact">&nbsp;</a>
+                <hr/>
+                <h2>
+                    <strong >Who to Contact About Your Project</strong>
+                </h2>
+                <p>
+                    The following table is a list of conditions (find the one that best fits you) and the Point
+                    of Contact for that effort.
+                </p>
+                <p>
+                    <strong>This is an off-the-top of my head list and is by no means right or complete.</strong>  This list
+                    is either helpful or a pain to keep current.
+                </p>
+                <p>
+                    <table class="table">
+                <tr><th>Category</th><th>Situation</th><th>Contact</th><th>Email</th></tr>
+                <tr><td>Organization</td><td>You work for the US Fish and Wildlife Service</td><td>Jana Newman</td><td></td></tr>
+                <tr><td>Organization</td><td>You work for a branch of Department of Defense</td><td>Elizabeth Neipert</td><td></td></tr>
+                <tr><td>Organization</td><td>You work for the National Park Service</td><td>Gareth Rowell</td><td></td></tr>
+                <tr><td>Existing Project</td><td>You are working on a project that is participating in the AKN</td>
+                    <td>Search the
+                        <a class="tools" href="SERVER_DOMAIN/apps/data_catalog/">Data Catalog</a>
+                    </td><td></td></tr>
+                <tr><td>Existing Project</td><td>You are part of the Migratory Shorebird Project</td><td>Matt Reiter</td><td></td></tr>
+                <tr><td>Existing Project</td><td>You are part of the Integrated Waterbird Management and Monitoring Project</td><td>Mindy Rice</td><td></td></tr>
+                <tr><td>Taxa</td><td>You are studying a specific species</td>
+                    <td>Search the
+                        <a class="tools" href="SERVER_DOMAIN/apps/data_catalog/">Data Catalog</a>
+                    </td><td></td></tr>
+                <tr><td>Geography</td><td>You are in the Pacific Northwest</td><td>John Alexander</td><td></td></tr>
+                <tr><td>Geography</td><td>You are in the Southwest US or Northern Mexico</td><td>Jennie Duberstein</td><td></td></tr>
+                <tr><td>Geography</td><td>You are in the Midwest</td><td>Katie Koch</td><td></td></tr>
+                <tr><td>Geography</td><td>You are in California</td><td>Michael Fitzgibbon</td><td></td></tr>
+                <tr><td>Geography</td><td>You are in the East</td><td>David Hanni</td><td></td></tr>
+                    </table>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

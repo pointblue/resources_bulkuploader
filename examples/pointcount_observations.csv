@@ -1,0 +1,8 @@
+survey_dat,survey_tim,Initials,temperatur,wind,sky,survey_sta,animal_spe,number_obs,animal_act,habitat_ty,other_habi,how,distance
+01/27/1942,17:00,GH,67,2,2,222,Rock pigeon,1,1,perching,golf_course,V,L50
+01/27/1942,17:00,GH,67,2,2,222,American Robin,1,1,perching,golf_course,V,L50
+01/27/1942,17:00,GH,67,2,2,222,Brewer's Blackbird,1,1,perching,golf_course,C,G50
+01/27/1942,17:23,GH,65,2,2,223,American Robin,2,1,hunting,short_grass,v,L50
+02/03/1942,16:40,AT,63,3,1,223,European Starling,4,1,flying_local,short_grass,S,FLO
+02/03/1942,16:55,AT,60,4,1,249,Brewer's Blackbird,2,1,hunting,golf_course,C,L50
+02/03/1942,16:55,AT,60,1,1,249,American Robin,2,1,hunting,golf_course,V,G50

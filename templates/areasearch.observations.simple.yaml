@@ -1,0 +1,299 @@
+#
+# Area Search Observation Data YAML
+#
+# For specific information about the what these fields mean, 
+# please go to Biologists app (data.pointblue.org/science/biologists) and click on field help.  
+# Also, see Biologists to tell you what fields are hidden/shown for a specific protocol.
+# 
+# For details on how on the format of YAML files, see the Area Search YAML template section "YAML 101"
+#
+
+#
+# ------------------------------- Protocol Fields -------------------------------
+#
+
+#
+# ProtocolType
+# The type of data being processed -- see other templates for other formats
+# REQUIRED
+#
+ProtocolType: AreaSearch
+
+#
+# ProtocolName 
+# The name of the Area Search protocol you are using.  
+# If this protocol does not exist in your project, it will be added. 
+# REQUIRED
+#
+ProtocolName: <<Your area search protocol ID here>>
+
+#
+# SiteConditionProtocolName
+# The name of the Site Condition protocol, if used.
+# If you do not have site conditions, simply comment out ("#") the line or delete it
+#
+SiteConditionProtocolName: <<Your site condition protocol ID here>>
+
+#
+# ------------------------------- Event Fields -------------------------------
+#
+# Event fields are what describes the set of observations collected at a location on 
+# a given date and time.  Event fields values that are specified in your CSV file are
+# repeated for each observation, used by the system to identify which observations are
+# in which event.
+#
+
+#
+# SamplingUnit
+# The name of the sampling unit (type: Area Search Points) for the event and observations.
+# You can specify either the short name or long name.
+# The sampling units must already be loaded into the project (see Add Sampling Units tool in the Bulk Uploader).
+# REQUIRED
+#
+SamplingUnit: <<Sampling Unit Name here>>
+
+
+#
+# EventDate
+# The date of the event.  Can be in any human readable data format with month, day, and year.
+# REQUIRED
+#
+EventDate: <<Event Date here>> 
+
+#
+# EventStartTime
+# The time the event began.  Can be in any human readable time format with hours and minutes.
+# REQUIRED
+#
+EventStartTime: <<Event Time here>> 
+
+#
+# EventEndTime
+# The time the event ended.  Can be in any human readable time format with hours and minutes.
+# REQUIRED
+#
+EventEndTime: <<Event Time here>> 
+
+#
+# Visit
+# The visit number of this event.
+# Integer.
+#
+Visit: <<Visit Number here>>
+
+#
+# OtherObserversCount
+# The number of other observers.
+# Integer.
+#
+OtherObserversCount: <<Other Observer Count here>>
+
+#
+# OtherObserversNames
+# The names of other observers.
+# Text string.
+#
+OtherObserversNames: <<Other Observer Names here>>
+
+#
+# EventNote
+# Any note about the event.
+# Text string.
+#
+EventNote: <<Event Note here>>
+
+#
+# DataSharingLevel
+# The AKN data sharing level for your data.
+# We recommend setting this to RAW or CLEAN, and reviewing the uploaded data in the system
+# before using a higher level.  If RAW, nothing happens to the data in the system.  If CLEAN,
+# the data will be available for you in Analyst to further proof you bulk loaded data. 
+# No data is shared or used publically that is RAW or CLEAN.
+# REQUIRED
+#
+DataSharingLevel: <<Data sharing Level here>>
+
+#
+# --------------------- Observation Fields ---------------------
+#
+# Each row in the CSV represents a single observation of 1 or more animals of the same species.
+#
+
+#
+# Count
+# The number of animals observed.
+# Integer.
+# REQUIRED
+#
+Count: <<Count here>>
+
+#
+# Species
+# The species of the animal(s) observed.
+# You can specify AOU birdcode, scientific name, common name.
+# See the Species Search tool to see what species are supported in our taxonomic database.
+# REQUIRED
+# 
+Species: <<Species here>>
+
+#
+# DetectionCue
+# The detection cue for the observation.
+# See the Protocol Search tool for full details on the DetectionCues supported by your Protocol
+# REQUIRED
+# 
+DetectionCue: <<Detection Cue here>>
+
+#
+# Observer
+# The Researcher who made the observation.
+# You can use first or last name, initials, or email address as defined in the database.
+# The Researchers must already be loaded into the project (see Add Researchers tool in the Bulk Uploader).
+# REQUIRED
+# 
+Observer: <<Observer Name here>> 
+
+
+#
+# ForageInd
+# An indication of whether foraging was observed.
+# 0 if no, 1 if yes
+#
+ForageInd: <<Forage Indicator here>> 
+
+#
+# FlockInd
+# An indication of whether flocking was observed.
+# 0 if no, 1 if yes
+#
+FlockInd: <<Flock Indicator here>> 
+
+#
+# CopulateInd
+# An indication of whether copulating was observed.
+# 0 if no, 1 if yes
+#
+CopulateInd: <<Copulate Indicator here>> 
+
+#
+# DisplayInd
+# An indication of whether breeding display was observed.
+# 0 if no, 1 if yes
+#
+DisplayInd: <<Display Indicator here>> 
+
+#
+# PairInd
+# An indication of whether 2 birds believed to be a mated pair were observed, and/or courtship behavior was observed.
+# 0 if no, 1 if yes
+#
+PairInd: <<Pair Indicator here>> 
+
+#
+# MaterialInd
+# An indication of whether the animal(s) was carrying nest material.
+# 0 if no, 1 if yes
+#
+MaterialInd: <<Material Indicator here>> 
+
+#
+# FoodInd
+# An indication of whether the animal(s) was carrying food.
+# 0 if no, 1 if yes
+#
+FoodInd: <<Food Indicator here>> 
+
+#
+# NestInd
+# An indication of whether an active nest was observed.
+# 0 if no, 1 if yes
+#
+NestInd: <<Nest Indicator here>> 
+
+#
+# FledgeInd
+# An indication of whether a dependent fledgling was observed.
+# 0 if no, 1 if yes
+#
+FledgeInd: <<Fledge Indicator here>> 
+
+#
+# OffPlotInd
+# An indication of whether the animal(s) were off plot.
+# 0 if no, 1 if yes
+#
+OffPlotInd: <<OffPlot Indicator here>> 
+
+#
+# BreedingEvidence
+# Breeding evidence with the observation.
+# Text string.
+#
+BreedingEvidence: <<Breeding Evidence here>> 
+
+#
+# AdultCount
+# Number of adults.
+# Integer.
+#
+AdultCount: <<Adult Count here>> 
+
+#
+# YoungCount
+# Number of young.
+# Integer.
+#
+YoungCount: <<Young Count here>> 
+
+#
+# BroodCount
+# Number of brood.
+# Integer.
+#
+BroodCount: <<Brood Count here>> 
+
+#
+# YoungAge
+# Age of young.
+# Integer.
+#
+YoungAge: <<Young Age here>> 
+
+#
+# ObservationNote
+# Any note about the observation.
+# Text string.
+#
+ObservationNote: <<Observation Note here>>
+
+#
+# --------------------- Extended Columns ---------------------
+#
+#
+# You can also include any extended columns supported by your protocol, use the Name as listed in the protocol definition
+# A protocol must already support an extended column for you to be able to use it.
+#
+# For example, with the area search protocol VCP25H, you would add this field to your observation list of fields:
+# 
+# VHabitatCdTIMA: <<Habitat Code here>>
+#
+# see the Protocol Search tool for specific information on what extended columns are available, if any, in your protocol.
+#
+
+#
+# --------------------- Site Condition Fields ---------------------
+#
+# All site condition fields will match what is in your SiteConditionProtocolName protocol.  
+# Name each field as "Set.Category": the Set name, plus a dot (.), plus the Category name.
+# See the protocol definition for your site condition protocol to get your Sets and Category names. 
+#
+# For example, with the site condition protocol WEATHER, all 5 fields would be:
+#
+# Temperature.Temperature: <<Temperature value here>>
+# Temperature.TemperatureUnits:  <<Temperature Units here>>
+# WindSpeed.WindSpeed: <<Wind Speed value here>>
+# WindSpeed.WindSpeedUnits: <<Wind Speed units here>>
+# CloudCover.CloudCoverPercent: <<Cloud Cover Percent here>> 
+#
+# See the Protocol Search tool for specific fields (Sets and Categories) for your site condition protocol.
+#

@@ -1,0 +1,276 @@
+#
+# Point Count Observation Data YAML
+#
+# For specific information about the what these fields mean, 
+# please go to Biologists app (data.pointblue.org/science/biologists) and click on field help.  
+# Also, see Biologists to tell you what fields are hidden/shown for a specific protocol.
+# 
+
+# 
+# ------------------------------- YAML 101 --------------------------------------
+#
+# Your YAML file defines how your CSV file of observations maps into your project database.
+#
+# A hash/pound sign (#) is used for comments - use them liberally to document your file. 
+# Everything after the "#" is treated as a comment.  If you put a "#" as the first character on
+# a line, the entire line is ignored.  If you put a "#" mid way in a line, only the 
+# text after the "#" is ignored.
+#
+# Generally, everything you will specify below that is not a comment takes the form:
+# 
+#       FieldName: your_value
+# 
+# where:
+#     "FieldName:" is what we call it in the system, don't change these names.  
+#                  These names always have a colon immediately after.
+#     "your_value" is what you are stuffing into it, which can be a column from your CSV file, 
+#             a text string, or a combination of the two
+#
+# The colon should be right next to the FieldName, and your_value needs at least 1 space between it and the colon.
+#
+# Anything with "<<" and ">>" is something you will replace with an appropriate "your_value", either:
+# * a column name from your CSV file where the value from that column will be used for each observation, 
+# * a text string that will be used the same for every observation, or
+# * a combination of the two
+#
+# Every field marked as REQUIRED must be included in this file.  Fields that are not required can be 
+# deleted from this file if you are not using them (you can also put a # in front of the FieldName and
+# they will be ignored).
+#
+# If a column name or text string you specify has spaces in it, it is best to surround it with double quotes 
+# so the system doesn't get confused, like: "Hi There" or "Species code"
+#
+# Imagine you want to build "your_value" from a combination of columns and text strings.
+# For example, if our CSV has the date split between two columns, one with year and other with a string
+# of the day and month.  You could preconcatenate them in Excel, or you can concatenate them on the fly like this:
+#
+#  EventDate:
+#     - Year
+#     - "-"
+#     - DayMonth
+# 
+# The "FieldName:" is specified like normal, but list each column name or text string you want to 
+# appended together on additional lines after the field name, indented a few spaces,
+# with a dash "-" in front.  You must have at least one space before the dash, and number of spaces 
+# you use before each dash must be consistent for each line. You can concatenate as many strings 
+# and columns together as you like for "your_value".
+#
+# This file should always have suffix ".yaml", but you can name the file appropriately for how you organize
+# your work.
+#
+
+#
+# ------------------------------- Protocol Fields -------------------------------
+#
+
+#
+# ProtocolType
+# The type of data being processed -- see other templates for other formats
+# REQUIRED
+#
+ProtocolType: PointCount
+
+#
+# ProtocolName 
+# The name of the Point Count protocol you are using.  
+# If this protocol does not exist in your project, it will be added. 
+# REQUIRED
+#
+ProtocolName: <<Your point count protocol ID here>>
+
+#
+# SiteConditionProtocolName
+# The name of the Site Condition protocol, if used.
+# If you do not have site conditions, simply comment out ("#") the line or delete it
+#
+SiteConditionProtocolName: <<Your site condition protocol ID here>>
+
+#
+# ------------------------------- Event Fields -------------------------------
+#
+# Event fields are what describes the set of observations collected at a location on 
+# a given date and time.  Event fields values that are specified in your CSV file are
+# repeated for each observation, used by the system to identify which observations are
+# in which event.
+#
+
+#
+# SamplingUnit
+# The name of the sampling unit (type: Point Count Points) for the event and observations.
+# You can specify either the short name or long name.
+# The sampling units must already be loaded into the project (see Add Sampling Units tool in the Bulk Uploader).
+# REQUIRED
+#
+SamplingUnit: <<Sampling Unit Name here>>
+
+
+#
+# EventDate
+# The date of the event.  Can be in any human readable data format with month, day, and year.
+# REQUIRED
+#
+EventDate: <<Event Date here>> 
+
+#
+# EventStartTime
+# The time the event began.  Can be in any human readable time format with hours and minutes.
+# REQUIRED
+#
+EventStartTime: <<Event Time here>> 
+
+#
+# Visit
+# The visit number of this event.
+# Integer.
+#
+Visit: <<Visit Number here>>
+
+#
+# EventNote
+# Any note about the event.
+# Text string.
+#
+EventNote: <<Event Note here>>
+
+#
+# DataSharingLevel
+# The AKN data sharing level for your data.
+# We recommend setting this to RAW or CLEAN, and reviewing the uploaded data in the system
+# before using a higher level.  If RAW, nothing happens to the data in the system.  If CLEAN,
+# the data will be available for you in Analyst to further proof you bulk loaded data. 
+# No data is shared or used publically that is RAW or CLEAN.
+# REQUIRED
+#
+DataSharingLevel: <<Data sharing Level here>>
+
+#
+# --------------------- Observation Fields ---------------------
+#
+# Each row in the CSV represents a single observation of 1 or more animals of the same species.
+#
+
+
+#
+# ObservationTime
+# The time of the observation, matching the start time of the Time Bin.
+# Can be in any human readable time format with hours and minutes.
+# REQUIRED
+#
+ObservationTime: <<Observation Time here>>
+
+#
+# Count
+# The number of animals observed.
+# Integer.
+# REQUIRED
+#
+Count: <<Count here>>
+
+#
+# Species
+# The species of the animal(s) observed.
+# You can specify AOU birdcode, scientific name, common name.
+# See the Species Search tool to see what species are supported in our taxonomic database.
+# REQUIRED
+# 
+Species: <<Species here>>
+
+#
+# DetectionCue
+# The detection cue for the observation.
+# See the Protocol Search tool for full details on the DetectionCues supported by your Protocol
+# REQUIRED
+# 
+DetectionCue: <<Detection Cue here>>
+
+#
+# DistanceBin
+# The distance bin for the observation.
+# See the Protocol Search tool for full details on the DetectionCues supported by your Protocol
+# REQUIRED
+# 
+DistanceBin: <<Distance Bin here>>
+
+#
+# TimeBin
+# The time bin for the observation.
+# See the Protocol Search tool for full details on the TimeBins supported by your Protocol
+# REQUIRED
+# 
+TimeBin: <<Time Bin here>>
+
+#
+# Observer
+# The Researcher who made the observation.
+# You can use first or last name, initials, or email address as defined in the database.
+# The Researchers must already be loaded into the project (see Add Researchers tool in the Bulk Uploader).
+# REQUIRED
+# 
+Observer: <<Observer Name here>> 
+
+#
+# BreedingStatus
+# The breeding status codes for your observation.  See Biologists for full details on these codes.
+# 
+BreedingStatus: <<Breeding Status here>>
+
+#
+# SingingInd
+# An indication of whether the animal(s) were singing.
+# 0 if no, 1 if yes
+#
+SingingInd: <<Singing Indicator here>> 
+
+#
+# Bearing
+# Compass bearing to the observation.
+# Integer between 0 and 359.
+#
+Bearing: <<Bearing here>> 
+
+#
+# ClusterInd
+# An indication of whether the animal(s) were clustered.
+# 0 if no, 1 if yes
+#
+ClusterInd: <<Cluster Indicator here>>
+
+
+#
+# ObservationNote
+# Any note about the observation.
+# Text string.
+#
+ObservationNote: <<Observation Note here>>
+
+#
+# --------------------- Extended Columns ---------------------
+#
+#
+# You can also include any extended columns supported by your protocol, use the Name as listed in the protocol definition
+# A protocol must already support an extended column for you to be able to use it.
+#
+# For example, with the point count protocol VCP25H, you would add this field to your observation list of fields:
+# 
+# VHabitatCdTIMA: <<Habitat Code here>>
+#
+# see the Protocol Search tool for specific information on what extended columns are available, if any, in your protocol.
+#
+
+#
+# --------------------- Site Condition Fields ---------------------
+#
+# All site condition fields will match what is in your SiteConditionProtocolName protocol.  
+# Name each field as "Set.Category": the Set name, plus a dot (.), plus the Category name.
+# See the protocol definition for your site condition protocol to get your Sets and Category names. 
+#
+# For example, with the site condition protocol WEATHER, all 5 fields would be:
+#
+# Temperature.Temperature: <<Temperature value here>>
+# Temperature.TemperatureUnits:  <<Temperature Units here>>
+# WindSpeed.WindSpeed: <<Wind Speed value here>>
+# WindSpeed.WindSpeedUnits: <<Wind Speed units here>>
+# CloudCover.CloudCoverPercent: <<Cloud Cover Percent here>> 
+#
+# See the Protocol Search tool for specific fields (Sets and Categories) for your site condition protocol.
+#

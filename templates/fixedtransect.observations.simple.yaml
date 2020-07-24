@@ -1,0 +1,373 @@
+#
+# Fixed Transect (or Linear Transect) Observation Data YAML
+#
+# For specific information about the what these fields mean, 
+# please go to Biologists app (data.pointblue.org/science/biologists) and click on field help.  
+# Also, see Biologists to tell you what fields are hidden/shown for a specific protocol.
+# 
+# For details on how on the format of YAML files, see the Area Search YAML template section "YAML 101"
+# 
+
+#
+# ------------------------------- Protocol Fields -------------------------------
+#
+
+#
+# ProtocolType
+# The type of data being processed -- see other templates for other formats
+# REQUIRED
+#
+ProtocolType: FixedTransect
+
+#
+# ProtocolName 
+# The name of the Fixed Transect protocol you are using.  
+# If this protocol does not exist in your project, it will be added. 
+# REQUIRED
+#
+ProtocolName: <<Your fixed transect protocol ID here>>
+
+#
+# SiteConditionProtocolName
+# The name of the Site Condition protocol, if used.
+# If you do not have site conditions, simply comment out ("#") the line or delete it
+#
+SiteConditionProtocolName: <<Your site condition protocol ID here>>
+
+#
+# ------------------------------- Event Fields -------------------------------
+#
+# Event fields are what describes the set of observations collected at a location on 
+# a given date and time.  Event fields values that are specified in your CSV file are
+# repeated for each observation, used by the system to identify which observations are
+# in which event.
+#
+
+#
+# SamplingUnit
+# The name of the sampling unit (type: Fixed Transect Points) for the event and observations.
+# You can specify either the short name or long name.
+# The sampling units must already be loaded into the project (see Add Sampling Units tool in the Bulk Uploader).
+# REQUIRED
+#
+SamplingUnit: <<Sampling Unit Name here>>
+
+#
+# EventDate
+# The date of the event.  Can be in any human readable data format with month, day, and year.
+# REQUIRED
+#
+EventDate: <<Event Date here>> 
+
+#
+# EventStartTime
+# The time the event began.  Can be in any human readable time format with hours and minutes.
+# REQUIRED
+#
+EventStartTime: <<Event Time here>> 
+
+#
+# Visit
+# The visit number of this event.
+# Integer.
+#
+Visit: <<Visit Number here>>
+
+#
+# EventEndTime
+# The time the event ended.  Can be in any human readable time format with hours and minutes.
+# REQUIRED
+#
+EventEndTime: <<Event Time here>> 
+
+#
+# Visit
+# The visit number of this event.
+# Integer.
+#
+Visit: <<Visit Number here>>
+
+#
+# OtherObserversCount
+# The number of other observers.
+# Integer.
+#
+OtherObserversCount: <<Other Observer Count here>>
+
+#
+# OtherObserversNames
+# The names of other observers.
+# Text string.
+#
+OtherObserversNames: <<Other Observer Names here>>
+
+#
+# TransectBearing
+# Compass bearing for the transect.
+# Integer between 0 and 359.
+#
+TransectBearing: <<Transect Bearing here>> 
+
+#
+# TransectLength
+# Total length of the transect.
+# Integer.
+#
+TransectLength: <<Transect Length here>> 
+
+#
+# TransectLengthSurveyed
+# Total length of what was surveyed on the transect.
+# Integer.
+#
+TransectLengthSurveyed: <<Transect Length Surveyed here>> 
+
+#
+# LatitudeStart and LongitudeStart
+# The latitude and longitude of the start point of the survey.
+# These 2 fields must be used together or not at all.  You cannot just have Latitude or Longitude.
+# All latitude/longitude values are assumed to be in decimal degrees WGS-84 datum.
+# Decimal, positive or negative.
+#
+LatitudeStart: <<Latitude Start value here>>
+LongitudeStart: <<Longitude Start value here>>
+
+#
+# LatitudeEnd and LongitudeEnd
+# The latitude and longitude of the end point of the survey.
+# These 2 fields must be used together or not at all.  You cannot just have Latitude or Longitude.
+# All latitude/longitude values are assumed to be in decimal degrees WGS-84 datum.
+# Decimal, positive or negative.
+#
+LatitudeEnd: <<Latitude Start value here>>
+LongitudeEnd: <<Longitude Start value here>>
+
+#
+# EventNote
+# Any note about the event.
+# Text string.
+#
+EventNote: <<Event Note here>>
+
+#
+# DataSharingLevel
+# The AKN data sharing level for your data.
+# We recommend setting this to RAW or CLEAN, and reviewing the uploaded data in the system
+# before using a higher level.  If RAW, nothing happens to the data in the system.  If CLEAN,
+# the data will be available for you in Analyst to further proof you bulk loaded data. 
+# No data is shared or used publically that is RAW or CLEAN.
+# REQUIRED
+#
+DataSharingLevel: <<Data sharing Level here>>
+
+#
+# --------------------- Observation Fields ---------------------
+#
+# Each row in the CSV represents a single observation of 1 or more animals of the same species.
+#
+
+
+#
+# ObservationTime
+# The time of the observation, matching the start time of the Time Bin.
+# Can be in any human readable time format with hours and minutes.
+# REQUIRED
+#
+ObservationTime: <<Observation Time here>>
+
+#
+# Count
+# The number of animals observed.
+# Integer.
+# REQUIRED
+#
+Count: <<Count here>>
+
+#
+# Species
+# The species of the animal(s) observed.
+# You can specify AOU birdcode, scientific name, common name.
+# See the Species Search tool to see what species are supported in our taxonomic database.
+# REQUIRED
+# 
+Species: <<Species here>>
+
+#
+# DetectionCue
+# The detection cue for the observation.
+# See the Protocol Search tool for full details on the DetectionCues supported by your Protocol
+# REQUIRED
+# 
+DetectionCue: <<Detection Cue here>>
+
+#
+# DistanceBin
+# The distance bin for the observation.
+# See the Protocol Search tool for full details on the DetectionCues supported by your Protocol
+# REQUIRED
+# 
+DistanceBin: <<Distance Bin here>>
+
+#
+# TimeBin
+# The time bin for the observation.
+# See the Protocol Search tool for full details on the TimeBins supported by your Protocol
+# REQUIRED
+# 
+TimeBin: <<Time Bin here>>
+
+#
+# Observer
+# The Researcher who made the observation.
+# You can use first or last name, initials, or email address as defined in the database.
+# The Researchers must already be loaded into the project (see Add Researchers tool in the Bulk Uploader).
+# REQUIRED
+# 
+Observer: <<Observer Name here>> 
+
+#
+# Bearing
+# Compass bearing to the observation.
+# Integer between 0 and 359.
+#
+Bearing: <<Bearing here>> 
+
+#
+# DistanceFromStart
+# Distance from start of survey to the observation.
+# Integer.
+#
+DistanceFromStart: <<Distance From Start here>> 
+
+#
+# DistanceToObservation
+# Distance to the animal(s) observed.
+# Integer.
+#
+DistanceToObservation: <<Distance To Observation here>>
+
+#
+# LatitudeObs and LongitudeObs
+# The latitude and longitude of the where the observation occurred.
+# These 2 fields must be used together or not at all.  You cannot just have Latitude or Longitude.
+# All latitude/longitude values are assumed to be in decimal degrees WGS-84 datum.
+# Decimal, positive or negative.
+#
+LatitudeObs: <<Latitude Observation value here>>
+LongitudeObs: <<Longitude Observation value here>>
+
+#
+# ClusterInd
+# An indication of whether clustering was observed.
+# 0 if no, 1 if yes
+#
+ClusterInd: <<Cluster Indicator here>> 
+
+#
+# ForageInd
+# An indication of whether foraging was observed.
+# 0 if no, 1 if yes
+#
+ForageInd: <<Forage Indicator here>> 
+
+#
+# FlockInd
+# An indication of whether flocking was observed.
+# 0 if no, 1 if yes
+#
+FlockInd: <<Flock Indicator here>> 
+
+#
+# CopulateInd
+# An indication of whether copulating was observed.
+# 0 if no, 1 if yes
+#
+CopulateInd: <<Copulate Indicator here>> 
+
+#
+# DisplayInd
+# An indication of whether breeding display was observed.
+# 0 if no, 1 if yes
+#
+DisplayInd: <<Display Indicator here>> 
+
+#
+# PairInd
+# An indication of whether 2 birds believed to be a mated pair were observed, and/or courtship behavior was observed.
+# 0 if no, 1 if yes
+#
+PairInd: <<Pair Indicator here>> 
+
+#
+# MaterialInd
+# An indication of whether the animal(s) was carrying nest material.
+# 0 if no, 1 if yes
+#
+MaterialInd: <<Material Indicator here>> 
+
+#
+# FoodInd
+# An indication of whether the animal(s) was carrying food.
+# 0 if no, 1 if yes
+#
+FoodInd: <<Food Indicator here>> 
+
+#
+# NestInd
+# An indication of whether an active nest was observed.
+# 0 if no, 1 if yes
+#
+NestInd: <<Nest Indicator here>> 
+
+#
+# FledgeInd
+# An indication of whether a dependent fledgling was observed.
+# 0 if no, 1 if yes
+#
+FledgeInd: <<Fledge Indicator here>> 
+
+#
+# OffPlotInd
+# An indication of whether the animal(s) were off plot.
+# 0 if no, 1 if yes
+#
+OffPlotInd: <<OffPlot Indicator here>> 
+
+#
+# ObservationNote
+# Any note about the observation.
+# Text string.
+#
+ObservationNote: <<Observation Note here>>
+
+#
+# --------------------- Extended Columns ---------------------
+#
+#
+# You can also include any extended columns supported by your protocol, use the Name as listed in the protocol definition
+# A protocol must already support an extended column for you to be able to use it.
+#
+# For example, with the fixed transect protocol VCP25H, you would add this field to your observation list of fields:
+# 
+# VHabitatCdTIMA: <<Habitat Code here>>
+#
+# see the Protocol Search tool for specific information on what extended columns are available, if any, in your protocol.
+#
+
+#
+# --------------------- Site Condition Fields ---------------------
+#
+# All site condition fields will match what is in your SiteConditionProtocolName protocol.  
+# Name each field as "Set.Category": the Set name, plus a dot (.), plus the Category name.
+# See the protocol definition for your site condition protocol to get your Sets and Category names. 
+#
+# For example, with the site condition protocol WEATHER, all 5 fields would be:
+#
+# Temperature.Temperature: <<Temperature value here>>
+# Temperature.TemperatureUnits:  <<Temperature Units here>>
+# WindSpeed.WindSpeed: <<Wind Speed value here>>
+# WindSpeed.WindSpeedUnits: <<Wind Speed units here>>
+# CloudCover.CloudCoverPercent: <<Cloud Cover Percent here>> 
+#
+# See the Protocol Search tool for specific fields (Sets and Categories) for your site condition protocol.
+#

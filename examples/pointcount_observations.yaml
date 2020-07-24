@@ -1,0 +1,33 @@
+# protocols
+ProtocolType: PointCount
+ProtocolName: FR50
+SiteConditionProtocolName: SurveyConditions
+
+# event data
+SamplingUnit:
+  - FW_
+  - survey_sta
+Visit: 1
+EventDate: survey_dat
+EventStartTime: survey_tim
+EventNote:
+DataSharingLevel: RAW
+
+# observation data
+ObservationTime: survey_tim
+Count: number_obs
+Species: animal_spe  
+DetectionCue: how 
+DistanceBin:  distance 
+TimeBin:  5  # just one time bin, no need for a column here
+Observer: initials  
+ObservationNote:
+  - "type:"
+  - habitat_ty
+  - "; other:"
+  - other_habi
+
+# site condition data
+Weather.Temperature: temperatur
+Weather.Sky: sky
+Weather.Wind: wind
