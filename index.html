@@ -60,12 +60,31 @@
                 <div class="page-header">
                     <h1>
                         Point Blue Science Cloud<br/>
-                        <strong >BETA Bulk Uploader Cookbook and Resources</strong>
+                        <strong >Bulk Uploader Cookbook and Resources (BETA)</strong>
                     </h1>
                     <p>
-                        July 24, 2020, Point Blue Conservation Science
+                        March 2021, Point Blue Conservation Science
                     </p>
                 </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <h1>TO DO</h1>
+                <ul>
+                    <li class="list-item">
+                        create a short video for each, add links in cookbook
+                    </li>
+                    <li class="list-item">
+                        cookbook is getting wordy -- break it up --> recipe, with details on steps
+                    </li>
+                    <li class="list-item">
+                        how to register -- use the DoD steps --> can they not register for a project?
+                    </li>
+                    <li class="list-item">
+                        add to project manager:  request a project (send email with info for Project Creation tool?);
+                        add to project manager:  request access to a project replacing existing DEJU tool
+                </ul>
             </div>
         </div>
         <div class="row mb-4">
@@ -111,7 +130,8 @@
                     </li>
                     <li class="list-item">
                         Do you need a new project or can you add to an existing project?  Have you spoken to an AKN
-                        Node coordinator about your project to see how it fits regionally?
+                        Node coordinator about your project to see how it fits regionally?  (TODO: provide List of people or point
+                        to AKN webpage for list)
                     </li>
                 </ul>
             </div>
@@ -156,10 +176,13 @@
                     <a href="https://ecos.fws.gov/ServCat/Reference/Profile/54162">
                         USFWS National Protocol Framework for land bird monitoring
                     </a>,
-                    you would discover the Point Count Protocol 0_to_9m25_50_100M+_KNUTSON
-                    (with Site Condition Protocol FWS_LANDBIRD_SITE_INFO)
+                    you would discover the Point Count Protocol
+                    <a href="SERVER_DOMAIN/science/biologists/php/protocolsearch.php?protocol=0_to_9m25_50_100M%2B_KNUTSON">0_to_9m25_50_100M+_KNUTSON</a>
+                    (with Site Condition Protocol
+                    <a href="SERVER_DOMAIN/science/biologists/php/protocolsearch.php?protocol=FWS_LANDBIRD_SITE_INFO">FWS_LANDBIRD_SITE_INFO</a>a)
                     was created to support this effort.  Does your organization have standards they follow?  If so,
-                    follow them!
+                    we strongly recommend you follow them -- consistency for data standards is really important to make
+                    data analysis easier and stronger.
                 </p>
                 <p>
                     <em>Strategy 2:</em> Find the closest fit from our library of protocols to your survey method.
@@ -169,12 +192,16 @@
                     fields or left out of this database.
                 </p>
                 <p>
-                    <em>Strategy 3:</em> Modify an existing protocol to fit better.  (need to create steps for how this works)
+                    <em>Strategy 3:</em> Modify an existing protocol to fit better.
+                    To do this, either work with an AKN Node Coordinator, or download the YAML file from the
+                    <a href="SERVER_DOMAIN/science/projectmanager/protocol_search">Protocol Search</a>
+                    tool, make changes, and send it to Point Blue Science Cloud help for them to create it.
                 </p>
                 <p>
-                    <em>Strategy 4:</em>  Fully describe your protocol and have our team create it for you.
+                    <em>Strategy 4:</em>  Fully describe your protocol and have our team create it for you
+                    from scratch.
                     This approach is more appropriate for standardized surveys that will be done by multiple
-                    people year after year.
+                    people year after year where you anticipate wide adoption.
                     This approach costs time and money to set up the protocol, but the system reflects your
                     exact methodology more completely.
                 </p>
@@ -206,8 +233,8 @@
                 </p>
                 <ul>
                     <li class="list-item">
-                        Create a new, empty project
-                        (<a class="tools" href="SERVER_DOMAIN/science/projectmanager/project_maker">Project Creation</a>)
+                        Request a new, empty project
+                        (<a class="tools" href="#">Project Creation Request</a>) - TODO
                     </li>
                 </ul>
             </div>
@@ -215,7 +242,7 @@
         <div class="row mb-4">
             <div class="col-md-12">
                 <h3>
-                    Step 4a:  Project Metadata - Create the Sampling Unit Hierarchy for your Project
+                    Step 4a:  Project Metadata - Building the Sampling Unit Hierarchy
                 </h3>
                 <p>
                     The Sampling Unit Hierarchy describes the sampling design for your data, including types
@@ -263,10 +290,22 @@
                     Step 4b:  Project Metadata - Create Researchers
                 </h3>
                 <p>
-                    When you add observations to your Project, you need to assign who did the surveys (aka Researchers).
+                    When you add observations to your Project,
+                    you need to indicate who did the surveys with a Researcher name that is assigned to your Project.
                     We allow you to add Researchers to your Project 3 different ways.
                 </p>
                 <ul>
+                    <li class="list-item">
+                        First, see who is assigned to your project.   You can do this one of two ways:
+                            <ol><li>
+                                Go to
+                                <a class="tools" href="SERVER_DOMAIN/science/projectmanager/project_maker">Bulk Uploader</a>,
+                                click the "Add Researchers" tab, and click the "Show What is in the Project" button.
+                            </li><li>
+                                Go to Project Leader
+                                <a class="tools" href="SERVER_DOMAIN/apps/projectleaders/index.php?page=project-access">Researcher Access</a>
+                                for your project.
+                            </li></ol>
                     <li class="list-item">
                         Through registration.  See <a href="#stepbystep_assign2project">how to join a project by registering or requesting access.</a>
                     </li>
@@ -287,7 +326,7 @@
         <div class="row mb-4">
             <div class="col-md-12">
                 <h3>
-                    Step 4c:  Project Metadata - Assign the Protocol(s) to your Project  (not required)
+                    Step 4c:  Project Metadata - Assign the Protocol(s) to your Project
                 </h3>
                 <p>
                     NOTE: this step might is not necessary, as the Protocol(s) will get added to the Project when
@@ -454,6 +493,7 @@
                 <tr><td>Organization</td><td>You work for the US Fish and Wildlife Service</td><td>Jana Newman</td><td></td></tr>
                 <tr><td>Organization</td><td>You work for a branch of Department of Defense</td><td>Elizabeth Neipert</td><td></td></tr>
                 <tr><td>Organization</td><td>You work for the National Park Service</td><td>Gareth Rowell</td><td></td></tr>
+                <tr><td>Organization</td><td>You work for the Bureau of Land Management</td><td>Renee Chi</td><td></td></tr>
                 <tr><td>Existing Project</td><td>You are working on a project that is participating in the AKN</td>
                     <td>Search the
                         <a class="tools" href="SERVER_DOMAIN/apps/data_catalog/">Data Catalog</a>
